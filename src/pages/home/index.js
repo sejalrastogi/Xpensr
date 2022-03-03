@@ -1,9 +1,10 @@
 import React from 'react';
+import TopFold from '../../components/topfold';
 import './home.css';
 
 const Home = () => {
-    return <div classNmae='home'>
-        <div>TopFold</div>
+    return <div className='home'>
+        <TopFold />
         <div>ExpenseList</div>
     </div>
 };
