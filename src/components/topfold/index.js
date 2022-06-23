@@ -1,17 +1,22 @@
 import React, { useState }from 'react'
 import './topfold.css'
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { searchExpense } from '../../redux/actions/expenses';
 
 const TopFold = () => {
-    const [query, setQuery] = useState("");
+    const [query, setQuery] = useState('');
+    const dispatch = useDispatch();
     const handleQuery = (e) => {
         setQuery(e.target.value);
+        // console.log(e.target.value)
+        query != '' && dispatch(searchExpense[e.target.value]);
     }
     return (
         <div className='topfold'>
             {window.location.pathname === '/' ? (<div className='home-topfold'>
                 <div className='searchbar'>
-                    <i class="fi fi-rr-search"></i>
+                    <i className="fi fi-rr-search"></i>
                     <input placeholder='Search for enpenses' value={query} onChange={(e) => handleQuery(e)} />
                 </div>
                 <Link to="/add-expense">
@@ -26,13 +31,13 @@ const TopFold = () => {
             <div className='add-topfold'>
                 <Link to="/">
                     <div className='add-topfold-button'>
-                        <i class="fi fi-rr-angle-left"></i>
+                        <i className="fi fi-rr-angle-left"></i>
                         <label>Back</label>
                     </div>
                 </Link>
                 <Link to="/">
                     <div className='add-topfold-button'>
-                        <i class="fi fi-rr-cross-circle"></i>
+                        <i className="fi fi-rr-cross-circle"></i>
                         <label>Cancel</label>
                     </div>
                 </Link>
